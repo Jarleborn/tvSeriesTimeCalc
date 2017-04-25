@@ -1,0 +1,28 @@
+{
+  "name": "api-tjosan",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "babel": "babel --presets es2015 js/main.js -o build/main.bundle.js",
+    "webpack": "webpack",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "./node_modules/babel-cli/bin/babel-node.js --presets node6 ./index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-loader": "^7.0.0",
+    "colors": "^1.1.2",
+    "webpack": "^2.4.1"
+  },
+  "dependencies": {
+    "babel-cli": "^6.24.1",
+    "babel-preset-node6": "^11.0.0",
+    "form-data": "^2.1.4",
+    "import-export": "^1.0.1",
+    "moviedb": "^0.2.8",
+    "node-fetch": "^1.6.3",
+    "tmdbv3": "^0.1.2"
+  }
+}
