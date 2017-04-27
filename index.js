@@ -1,32 +1,35 @@
 require('import-export')
+
+import {getSeries, getSeriesInfo} from './modules/seriesInfoModule'
+
 const fetch = require('node-fetch');
 const FormData = require('form-data')
-import config from './config'
-const mdb = require('moviedb')(config())
+const express = require('express')
+const app = express()
+const bodyParser = require('body-parser')
 
-function getSeries() {
-  return new Promise(function(resolve, reject) {
-  mdb.searchTv({ query: 'friends' }, (err, res) => {
-      resolve(res.results[0])
-    })
+app.use(bodyParser.json())
+
+  app.get('/', function (req, res) {
+    res.send('Hello World!')
   })
-}
 
-function getSeriesInfo(series) {
-  return new Promise(function(resolve, reject) {
-    mdb.tvInfo({ id: series.id }, (err, res) => {
-      resolve(res.episode_run_time[0] * res.number_of_episodes)
-    })
-  });
-}
+  app.post('/getinfo', function (req, res) {
+    getSeries(req.body.series)
+    .then(function (result) {
+        getSeriesInfo(result)
+        .then(function (result) {
+          const resObj = {
+            'minutes': result,
+            'days': Math.round((result/60/24) * 10) / 10,
+          }
+          console.log(resObj);
+          res.send(resObj)
+        })
+      })
+  })
 
 
-getSeries()
-.then(function (res) {
-  console.log('Att se serien ' + res.name);
-    getSeriesInfo(res)
-    .then(function (res) {
-      console.log('tar exakt ' + res + ' minuter');
-      console.log('vilket är ' + Math.round((res/60/24) * 10) / 10 + ' dagar');
-    })
+  app.listen(3000, function () {
+    console.log('Example app listening on port 3000!')
   })
