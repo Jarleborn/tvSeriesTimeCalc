@@ -10,9 +10,11 @@ const bodyParser = require('body-parser')
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(express.static(__dirname + '/public'))
 
   app.get('/', function (req, res) {
-    res.send('Hello World!')
+    // res.sendFile(__dirname + '/public/index.html')
+    res.sendfile(__dirname + '/public/index.html')
   })
 
   app.post('/getinfo', function (req, res) {
@@ -22,12 +24,6 @@ app.use(cors())
       .then(function (result) {
           getSeriesInfo(result)
           .then(function (result) {
-            // const resObj = {
-            //   'minutes': result,
-            //   'days': Math.round((result/60/24) * 10) / 10,
-            // }
-            // console.log('result ', resObj);
-            
             res.send(
               result
             )
@@ -47,6 +43,6 @@ app.use(cors())
   })
 
 
-  app.listen(3000, function () {
+  app.listen(5000, function () {
     console.log('Example app listening on port 3000!')
   })

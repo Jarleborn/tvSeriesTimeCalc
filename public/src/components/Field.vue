@@ -32,7 +32,8 @@ export default {
   methods: {
     getInfo (searchtext) {
       const that = this
-      fetch('http://localhost:3000/getinfo',
+      // TODO Erase some bits
+      fetch('http://localhost:5000/getinfo',
         {
           headers: {
             'Content-Type': 'application/json'
