@@ -1,0 +1,35 @@
+/*#q-app {
+  background-color: #a65eda;
+  text-align: center;
+}*/
+
+body {
+  background-color: #a65eda;
+  text-align: center;
+  padding-top: 20%;
+  padding: 15%
+}
+
+input {
+  width: 90%;
+margin-top: 20%;
+}
+
+button {
+  border-style: solid;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color:    darkgray;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color:    darkgray;
+   opacity:  1;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color:    darkgray;
+   opacity:  1;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color:    darkgray;
+}
