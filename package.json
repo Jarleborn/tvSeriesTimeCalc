@@ -33,7 +33,7 @@
     "form-data": "^2.1.4",
     "import-export": "^1.0.1",
     "moviedb": "^0.2.8",
-    "node-fetch": "^1.6.3",
+    "node-fetch": "^2.6.1",
     "tmdbv3": "^0.1.2"
   }
 }
